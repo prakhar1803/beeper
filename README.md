@@ -1,5 +1,7 @@
 # beeper
 
+This is a simple beeper that beeps every specified minutes.
+
 ## Project setup
 ```
 npm install
