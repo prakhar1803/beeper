@@ -15,14 +15,14 @@
     <v-main class="brown darken-2 text-center f-aic">
       <!-- <div class="mixer"></div> -->
       <v-container class="white--text">
-        <div class="empty-space" @click="minutes=minutes-1"></div>
+        <div class="empty-space" @click="minutes=parseInt(minutes)-1"></div>
         <span @click="setTime"
               class="big-heading"
               :style="{color: getColor}"
         >
-        {{minutes}}
+        {{getMinutes}}
         </span>
-        <div class="empty-space" @click="minutes=minutes+1"></div>
+        <div class="empty-space" @click="minutes=parseInt(minutes)+1"></div>
       </v-container>
     </v-main>
     <v-footer class="deep-orange darken-4" padless>
@@ -40,11 +40,6 @@
 
 export default {
   name: 'App',
-
-  components: {
-    
-  },
-
   data: () => ({
     minutes: 5,
     status: false,
@@ -68,17 +63,32 @@ export default {
       }
     }
   },
+  watch: {
+    minutes: (newVal, oldVal) => {
+      if (newVal < 1) {
+        localStorage.setItem("minutes", 1)
+      } else if (newVal > 60) {
+        localStorage.setItem("minutes", 60)
+      } else {
+        localStorage.setItem("minutes", newVal)
+      }
+    }
+  },
+  created() {
+    if (localStorage.getItem("minutes") != null) {
+      this.minutes = parseInt(localStorage.getItem("minutes"))
+    }
+  },
   mounted() {
     setInterval(() => {
       if(this.status) {
         this.beep.play()
       }
-    }, this.getMinutes()*1000)
+    }, this.getMinutes*60000)
   },
   methods: {
     setTime() {
       this.status = !this.status
-      console.log(this.status)
       this.beep.play()
     }
   }

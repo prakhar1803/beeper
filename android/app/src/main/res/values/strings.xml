@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Beeper</string>
+    <string name="title_activity_main">Beeper</string>
+    <string name="package_name">com.beeper</string>
+    <string name="custom_url_scheme">com.beeper</string>
+</resources>

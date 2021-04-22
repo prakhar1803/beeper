@@ -7,6 +7,10 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@capacitor/android": "^2.4.7",
+    "@capacitor/cli": "^2.4.7",
+    "@capacitor/core": "^2.4.7",
+    "cordova-res": "^0.15.3",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vuetify": "^2.4.0"
